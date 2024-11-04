@@ -23,6 +23,7 @@ jobs:
       - name: Install deps
         run: yarn install --frozen-lockfile
       - name: Fetch News
+        run: yarn global add ts-node
         run: yarn scrape
       - name: Build website
         run: yarn build
