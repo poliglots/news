@@ -1,11 +1,16 @@
 name: Build & Deploy News
 
+# on:
+#   push:
+#     branches:
+#       - main
+#     # Review gh actions docs if you want to further define triggers, paths, etc
+#     # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
+
+
 on:
-  push:
-    branches:
-      - main
-    # Review gh actions docs if you want to further define triggers, paths, etc
-    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
+  schedule:
+  - cron: "0 */12 * * *"
 
 jobs:
   build:
