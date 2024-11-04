@@ -8,13 +8,13 @@ name: Build & Deploy News
 #     # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
 
 
-# on:
-#   schedule:
-#   - cron: "0 */12 * * *"
-
 on:
   schedule:
-  - cron: "*/5 * * * *"
+  - cron: "0 */12 * * *"
+
+# on:
+#   schedule:
+#   - cron: "*/5 * * * *"
 
 jobs:
   build:
