@@ -10,7 +10,7 @@ name: Build & Deploy News
 
 on:
   schedule:
-  - cron: "04 */1 * * *"
+  - cron: "34 */6 * * *"
 
 # on:
 #   schedule:
