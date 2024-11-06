@@ -29,7 +29,7 @@ jobs:
       - name: Install ts
         run: yarn global add ts-node
       - name: Fetch News
-        run: ./bin/scrape
+        run: ./scrape
       - name: Build website
         run: yarn build
 
