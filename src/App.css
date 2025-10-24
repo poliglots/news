@@ -1,0 +1,15 @@
+html,
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
+#header {
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+}
+#main {
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
