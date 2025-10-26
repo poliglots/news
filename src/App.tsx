@@ -14,6 +14,7 @@ function App() {
             key={index}
             headline={item.headline}
             news={item.news}
+            link={item.link}
           ></NewsCard>
         ))}
       </div>

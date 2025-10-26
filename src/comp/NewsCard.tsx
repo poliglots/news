@@ -1,9 +1,10 @@
 interface newsCardType {
   headline: string;
   news: string;
+  link: string;
 }
 
-function NewsCard({ headline, news }: newsCardType) {
+function NewsCard({ headline, news, link }: newsCardType) {
   return (
     <>
       <article className="message is-info">
@@ -11,7 +12,11 @@ function NewsCard({ headline, news }: newsCardType) {
           <p>{headline}</p>
           <button className="delete" aria-label="delete"></button>
         </div>
-        <div className="message-body">{news}</div>
+        <div className="message-body">
+          <a id="news" href={link}>
+            {news.split(".").slice(0, 4).join(". ").concat(".")}
+          </a>
+        </div>
       </article>
     </>
   );
