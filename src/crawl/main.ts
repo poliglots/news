@@ -5,7 +5,12 @@ import { logger } from "./logger.ts";
 
 const DEBUG_MODE = process.env.DEBUG_MODE || false;
 
-const BlackListWords = ["AnalysisAnalysis", "GalleryGallery", "VideoVideo"];
+const BlackListWords = [
+  "AnalysisAnalysis",
+  "Live Updates",
+  "GalleryGallery",
+  "VideoVideo",
+];
 
 async function filterNews(news: News) {
   // if headline contains garbage
