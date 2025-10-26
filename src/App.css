@@ -17,3 +17,7 @@ body {
 #news {
   text-decoration: none;
 }
+
+.modal-card-title {
+  white-space: normal;
+}
