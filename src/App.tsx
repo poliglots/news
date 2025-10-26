@@ -9,14 +9,16 @@ function App() {
     <>
       <Nav></Nav>
       <div id="main">
-        {data.map((item, index) => (
-          <NewsCard
-            key={index}
-            headline={item.headline}
-            news={item.news}
-            link={item.link}
-          ></NewsCard>
-        ))}
+        {data
+          .sort((a, b) => a.headline.localeCompare(b.headline))
+          .map((item, index) => (
+            <NewsCard
+              key={index}
+              headline={item.headline}
+              news={item.news}
+              link={item.link}
+            ></NewsCard>
+          ))}
       </div>
     </>
   );
