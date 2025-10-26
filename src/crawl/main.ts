@@ -1,9 +1,26 @@
 import { load } from "cheerio";
-import type Site from "./store.ts";
+import type { Site, News } from "./store.ts";
 import siteList from "./config.ts";
 import { logger } from "./logger.ts";
 
 const DEBUG_MODE = process.env.DEBUG_MODE || false;
+
+const BlackListWords = ["AnalysisAnalysis", "GalleryGallery", "VideoVideo"];
+
+async function filterNews(news: News) {
+  // if headline contains garbage
+  for (let word in BlackListWords) {
+    if (news.headline.includes(word)) {
+      return;
+    }
+  }
+  // if details are short ignore
+  if (news.details.length < 300) {
+    return;
+  }
+
+  logger.info("", news);
+}
 
 async function getFullNews(url: string, textTag: string) {
   let full_story = "";
@@ -54,12 +71,13 @@ async function readNews(site: Site) {
         } else {
           navLink = `${site.url}${link}`;
         }
-        let fnews = await getFullNews(navLink, site.followLinkTextTag);
-        logger.info("", {
+        let detailedNews = await getFullNews(navLink, site.followLinkTextTag);
+        let news: News = {
           link: `${navLink}`,
           headline: `${headline}`,
-          news: `${fnews}`,
-        });
+          details: `${detailedNews}`,
+        };
+        await filterNews(news);
         counter++;
       }
     }

@@ -1,4 +1,4 @@
-import type Site from "./store.ts";
+import type { Site } from "./store.ts";
 
 export const NEWS_TEXT_FILE = "./dist/news.log";
 export const NEWS_JSON_FILE = "./dist/news.json";
