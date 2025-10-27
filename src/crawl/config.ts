@@ -42,6 +42,18 @@ export default async function siteList() {
       headLineTextTag: "h2",
       followLinkTextTag: "p",
     },
+    {
+      url: "https://www.reuters.com",
+      headLineLinkTag: "a",
+      headLineTextTag: "span",
+      followLinkTextTag: "div.text-module__text__0GDob",
+    },
+    {
+      url: "https://www.nytimes.com",
+      headLineLinkTag: "a",
+      headLineTextTag: "p",
+      followLinkTextTag: "p",
+    },
   ];
 
   return sites;
