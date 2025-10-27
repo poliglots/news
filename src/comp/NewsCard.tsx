@@ -1,13 +1,8 @@
 import { useState } from "react";
 import Modal from "./Modal";
+import type { NewsLog } from "../crawl/store";
 
-interface newsCardType {
-  headline: string;
-  news: string;
-  link: string;
-}
-
-function NewsCard({ headline, news, link }: newsCardType) {
+function NewsCard({ newsLog }: { newsLog: NewsLog }) {
   const [isModalActive, setIsModalActive] = useState(false);
 
   const handleOpenModal = () => {
@@ -22,19 +17,21 @@ function NewsCard({ headline, news, link }: newsCardType) {
     <>
       <article className="message is-info">
         <div className="message-header">
-          <p>{headline}</p>
-          <button className="delete" aria-label="delete"></button>
+          <p>{newsLog.headline}</p>
+          <button className="button is-info is-light">
+            source: {newsLog.level}
+          </button>
         </div>
         <div className="message-body">
           <a id="news" onClick={handleOpenModal}>
-            {news.split(".").slice(0, 4).join(". ").concat(".")}
+            {newsLog.message}
           </a>
           <Modal
             isActive={isModalActive}
             onClose={handleCloseModal}
-            headline={headline}
-            link={link}
-            details={news}
+            headline={newsLog.headline}
+            link={newsLog.link}
+            details={newsLog.details}
           />
         </div>
       </article>

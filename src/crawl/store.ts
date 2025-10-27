@@ -3,6 +3,7 @@ export interface Site {
   headLineLinkTag: string;
   headLineTextTag: string;
   followLinkTextTag: string;
+  headers?: {};
 }
 
 export interface News {
@@ -11,10 +12,7 @@ export interface News {
   details: string;
 }
 
-export interface Logs {
-  details: string;
-  headline: string;
+export interface NewsLog extends News {
   level: string;
-  link: string;
   message: string;
 }

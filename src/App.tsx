@@ -11,13 +11,8 @@ function App() {
       <div id="main">
         {data
           .sort((a, b) => a.headline.localeCompare(b.headline))
-          .map((item, index) => (
-            <NewsCard
-              key={index}
-              headline={item.headline}
-              news={item.details}
-              link={item.link}
-            ></NewsCard>
+          .map((newsLog, index) => (
+            <NewsCard key={index} newsLog={newsLog}></NewsCard>
           ))}
       </div>
     </>

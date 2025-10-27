@@ -8,7 +8,7 @@ export default async function siteList() {
     {
       url: "https://edition.cnn.com",
       headLineLinkTag: "a",
-      headLineTextTag: "span",
+      headLineTextTag: "span.container__headline-text",
       followLinkTextTag: "p",
     },
     {
@@ -28,6 +28,13 @@ export default async function siteList() {
       headLineLinkTag: "a",
       headLineTextTag: "span",
       followLinkTextTag: "p",
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:144.0) Gecko/20100101 Firefox/144.0",
+        Host: "www.washingtonpost.com",
+        Accept:
+          "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+      },
     },
     {
       url: "https://www.euronews.com",

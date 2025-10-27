@@ -1,44 +1,24 @@
 import { load } from "cheerio";
-import type { Site, News } from "./store.ts";
+import { type Site, type News } from "./store.ts";
 import siteList from "./config.ts";
 import { logger } from "./logger.ts";
 
-const DEBUG_MODE = process.env.DEBUG_MODE || false;
+const DEBUG_MODE = process.env.DEBUG_MODE || true;
 
-const BlackListWords = [
-  "AnalysisAnalysis",
-  "Live Updates",
-  "GalleryGallery",
-  "VideoVideo",
-];
-
-async function filterNews(news: News) {
-  // if headline contains garbage
-  for (let word in BlackListWords) {
-    if (news.headline.includes(word)) {
-      return;
-    }
-  }
-  // if details are short ignore
-  if (news.details.length < 300) {
-    return;
-  }
-
-  logger.info("", news);
-}
-
-async function getFullNews(url: string, textTag: string) {
+async function getFullNews(url: string, site: Site) {
   let full_story = "";
   try {
-    let res = await fetch(url);
+    let res = await fetch(url, {
+      headers: site.headers,
+    });
     let page = await res.text();
 
     let $ = load(page);
-    let paragraphs = $(textTag);
+    let paragraphs = $(site.followLinkTextTag);
 
     for (const paragraph of paragraphs) {
       let para = $(paragraph).text().trim();
-      full_story = full_story.concat(para);
+      full_story = full_story.concat(`<p>${para}</p>`);
     }
   } catch (error) {
     console.error(`Error in reading ${url} - `, error);
@@ -50,7 +30,9 @@ async function getFullNews(url: string, textTag: string) {
 async function readNews(site: Site) {
   try {
     let counter = 0;
-    let res = await fetch(site.url);
+    let res = await fetch(site.url, {
+      headers: site.headers,
+    });
     let page = await res.text();
 
     let $ = load(page);
@@ -76,13 +58,13 @@ async function readNews(site: Site) {
         } else {
           navLink = `${site.url}${link}`;
         }
-        let detailedNews = await getFullNews(navLink, site.followLinkTextTag);
+        let detailedNews = await getFullNews(navLink, site);
         let news: News = {
           link: `${navLink}`,
           headline: `${headline}`,
           details: `${detailedNews}`,
         };
-        await filterNews(news);
+        logger.info("", news);
         counter++;
       }
     }
