@@ -1,19 +1,17 @@
 function Nav() {
   return (
     <>
-      <nav
-        id="header"
-        className="navbar is-fixed-top"
-        role="navigation"
-        aria-label="main navigation"
-      >
+      <nav id="header" className="navbar is-fixed-top">
         <div className="navbar-brand">
-          <a
-            className="button is-link is-light"
-            href="https://poliglots.github.io"
-          >
-            <strong>News by Polyglot || Modder</strong>
-          </a>
+          <button className="button is-info is-rounded">News</button>
+          <div className="navbar-item">
+            <div className="buttons">
+              <input
+                className="button is-primary is-light"
+                placeholder="search"
+              ></input>
+            </div>
+          </div>
         </div>
       </nav>
     </>
