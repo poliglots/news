@@ -4,11 +4,18 @@ body {
   width: 100vw;
 }
 
-#header {
+.navbar {
+  overflow: hidden;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 95vw;
   margin-left: 5vw;
-  margin-right: 5vw;
-  width: 90vw;
 }
+
+.header-items {
+  margin: 5px;
+}
+
 #main {
   margin-top: 10vh;
   margin-left: 5vw;

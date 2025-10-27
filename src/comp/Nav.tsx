@@ -1,20 +1,16 @@
-function Nav() {
+function Nav({ onInputChange }: { onInputChange: (val: string) => void }) {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onInputChange(e.currentTarget.value);
+  };
   return (
-    <>
-      <nav id="header" className="navbar is-fixed-top">
-        <div className="navbar-brand">
-          <button className="button is-info is-rounded">News</button>
-          <div className="navbar-item">
-            <div className="buttons">
-              <input
-                className="button is-primary is-light"
-                placeholder="search"
-              ></input>
-            </div>
-          </div>
-        </div>
-      </nav>
-    </>
+    <div className="navbar">
+      <button className="button is-link is-light header-items">News</button>
+      <input
+        className="button header-items"
+        placeholder="search by source"
+        onChange={handleChange}
+      ></input>
+    </div>
   );
 }
 

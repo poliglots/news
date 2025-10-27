@@ -3,19 +3,29 @@ import "./App.css";
 import data from "../dist/news.json";
 import NewsCard from "./comp/NewsCard";
 import Nav from "./comp/Nav";
+import { useState } from "react";
 
 function App() {
+  const [filterBy, setFilterBy] = useState("");
+
+  const handleInputChange = (valueFromChild: string) => {
+    setFilterBy(valueFromChild);
+  };
+
   return (
-    <>
-      <Nav></Nav>
+    <div>
+      <Nav onInputChange={handleInputChange}></Nav>
       <div id="main">
         {data
           .sort((a, b) => a.headline.localeCompare(b.headline))
+          .filter((item) =>
+            item.link.toLowerCase().includes(filterBy.toLowerCase())
+          )
           .map((newsLog, index) => (
             <NewsCard key={index} newsLog={newsLog}></NewsCard>
           ))}
       </div>
-    </>
+    </div>
   );
 }
 
