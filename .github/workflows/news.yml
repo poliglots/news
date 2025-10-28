@@ -2,7 +2,7 @@ name: Deploy News
 
 on:
   schedule:
-    - cron: "19 */4 * * *"
+    - cron: "19 */7 * * *"
   push:
     branches:
       - main
