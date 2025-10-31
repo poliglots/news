@@ -2,8 +2,8 @@ import "bulma/css/bulma.min.css";
 import "./App.css";
 import data from "../../dist/news.json";
 import lastRun from "../../dist/time.json";
-import NewsCard from "./comp/NewsCard";
-import Nav from "./comp/Nav";
+import NewsCard from "./NewsCard";
+import Nav from "./Nav";
 import { useState } from "react";
 
 function App() {
