@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [react()],
   base: "/news/",
   build: {
+    outDir: "../dist",
     emptyOutDir: false, // This line prevents the output directory from being emptied
   },
 });
