@@ -3,7 +3,7 @@ export interface Site {
   headLineLinkTag: string;
   headLineTextTag: string;
   followLinkTextTag: string;
-  headers?: {};
+  headers: {};
 }
 
 export interface News {

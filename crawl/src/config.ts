@@ -1,7 +1,8 @@
 import type { Site } from "./store.ts";
 
-export const NEWS_TEXT_FILE = "./dist/news.log";
-export const NEWS_JSON_FILE = "./dist/news.json";
+export const NEWS_TEXT_FILE = "../dist/news.log";
+export const NEWS_JSON_FILE = "../dist/news.json";
+export const TIME_JSON_FILE = "../dist/time.json";
 
 export default async function siteList() {
   let sites: Site[] = [
@@ -10,18 +11,21 @@ export default async function siteList() {
       headLineLinkTag: "a",
       headLineTextTag: "span.container__headline-text",
       followLinkTextTag: "p",
+      headers: {},
     },
     {
       url: "https://www.bbc.com",
       headLineLinkTag: "a",
       headLineTextTag: "h2",
       followLinkTextTag: "p",
+      headers: {},
     },
     {
       url: "https://www.aljazeera.com",
       headLineLinkTag: "a",
       headLineTextTag: "span",
       followLinkTextTag: "p",
+      headers: {},
     },
     {
       url: "https://www.washingtonpost.com",
@@ -41,18 +45,21 @@ export default async function siteList() {
       headLineLinkTag: "a",
       headLineTextTag: "h2",
       followLinkTextTag: "p",
+      headers: {},
     },
     {
       url: "https://www.reuters.com",
       headLineLinkTag: "a",
       headLineTextTag: "span",
       followLinkTextTag: "div.text-module__text__0GDob",
+      headers: {},
     },
     {
       url: "https://www.nytimes.com",
       headLineLinkTag: "a",
       headLineTextTag: "p",
       followLinkTextTag: "p",
+      headers: {},
     },
   ];
 

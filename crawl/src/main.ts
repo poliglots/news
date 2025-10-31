@@ -1,9 +1,10 @@
 import { load } from "cheerio";
 import { type Site, type News } from "./store.ts";
-import siteList from "./config.ts";
+import siteList, { TIME_JSON_FILE } from "./config.ts";
 import { logger } from "./logger.ts";
+import { writeFileSync } from "node:fs";
 
-const DEBUG_MODE = process.env.DEBUG_MODE || true;
+const DEBUG_MODE = Boolean(process.env.DEBUG_MODE) || false;
 
 async function getFullNews(url: string, site: Site) {
   let full_story = "";
@@ -38,7 +39,7 @@ async function readNews(site: Site) {
     let $ = load(page);
     let headlines = $(site.headLineLinkTag);
     for (const headlineElement of headlines) {
-      if (counter >= 1 && DEBUG_MODE === "true") {
+      if (counter >= 1 && DEBUG_MODE === true) {
         break;
       }
       let headline = $(headlineElement)
@@ -73,11 +74,20 @@ async function readNews(site: Site) {
   }
 }
 
+async function writeTime() {
+  try {
+    writeFileSync(TIME_JSON_FILE, `{"time":"${new Date()}"}`);
+  } catch (error) {
+    console.log("error in witing time");
+  }
+}
+
 async function main() {
   let sites = await siteList();
   for (let site of sites) {
     readNews(site);
   }
+  await writeTime();
 }
 
 await main();

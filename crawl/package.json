@@ -1,0 +1,24 @@
+{
+  "name": "crwal",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "crawl": "tsx src/main.ts",
+    "json": "tsx src/log2json.ts",
+    "news": "yarn crawl && yarn json"
+  },
+  "dependencies": {
+    "cheerio": "^1.1.2",
+    "winston": "^3.18.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.36.0",
+    "@types/node": "^24.9.1",
+    "@types/cheerio": "^0.22.35",
+    "eslint": "^9.36.0",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.45.0",
+    "tsx": "^4.20.6"
+  }
+}

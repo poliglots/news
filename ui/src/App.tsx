@@ -1,6 +1,7 @@
 import "bulma/css/bulma.min.css";
 import "./App.css";
-import data from "../dist/news.json";
+import data from "../../dist/news.json";
+import lastRun from "../../dist/time.json";
 import NewsCard from "./comp/NewsCard";
 import Nav from "./comp/Nav";
 import { useState } from "react";
@@ -14,7 +15,10 @@ function App() {
 
   return (
     <div>
-      <Nav onInputChange={handleInputChange}></Nav>
+      <Nav
+        lastUpdate={lastRun.time.split("GMT")[0]}
+        onInputChange={handleInputChange}
+      ></Nav>
       <div id="main">
         {data
           .sort((a, b) => a.headline.localeCompare(b.headline))

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Modal from "./Modal";
-import type { NewsLog } from "../crawl/store";
+import type { NewsLog } from "../../crawl/src/store";
 
 function NewsCard({ newsLog }: { newsLog: NewsLog }) {
   const [isModalActive, setIsModalActive] = useState(false);

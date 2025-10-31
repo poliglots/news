@@ -1,5 +1,5 @@
 import winston from "winston";
-import { NEWS_TEXT_FILE } from "./config";
+import { NEWS_TEXT_FILE } from "./config.ts";
 
 export const logger = winston.createLogger({
   level: "info",

@@ -24,14 +24,11 @@ jobs:
         with:
           node-version: "lts/*" # Adjust as needed
 
-      - name: Install dependencies
-        run: yarn install
-
       - name: crawl site
-        run: yarn news
+        run: make crawl
 
       - name: Build site
-        run: yarn build
+        run: make ui
 
       - name: Upload static files as artifact
         id: deployment

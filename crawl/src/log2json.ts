@@ -1,8 +1,8 @@
 import fs from "node:fs";
 import readline from "node:readline";
-import { type NewsLog } from "./store";
-import { NEWS_JSON_FILE, NEWS_TEXT_FILE } from "./config";
-import { BlackListHeadLine, BlackListPara } from "./filterList";
+import { type NewsLog } from "./store.ts";
+import { NEWS_JSON_FILE, NEWS_TEXT_FILE } from "./config.ts";
+import { BlackListHeadLine, BlackListPara } from "./filterList.ts";
 import { load } from "cheerio";
 
 async function isHeadlineGarbage(news: NewsLog) {
