@@ -54,7 +54,7 @@ async function winstonLogFile2Json(filePath: string, jsonFilePath: string) {
 
     for await (const line of rl) {
       let newsLog: NewsLog = JSON.parse(line);
-      newsLog.level = newsLog.link.split(".")[1];
+      newsLog.level = newsLog.link.split(".")[1] ?? "Unknown";
       newsLog.details = await transformPara(newsLog.details);
       newsLog.message = newsLog.details
         .split(".")
@@ -70,7 +70,7 @@ async function winstonLogFile2Json(filePath: string, jsonFilePath: string) {
         index === self.findIndex((item) => item.headline === obj.headline)
     );
     // console.log(uniqueLogs);
-    fs.writeFileSync(jsonFilePath, JSON.stringify(uniqueLogs));
+    fs.writeFileSync(jsonFilePath, JSON.stringify(uniqueLogs, null, 2));
   } catch (error) {
     console.error("Error in parsing/writing logs:", error);
   }
