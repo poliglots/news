@@ -1,0 +1,36 @@
+html,
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
+.navbar {
+  overflow: hidden;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 95vw;
+  margin-left: 5vw;
+}
+
+.header-items {
+  margin: 5px;
+}
+
+#lastRun {
+  margin-left: 95vw;
+  margin-right: 5vw;
+}
+
+#main {
+  margin-top: 10vh;
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+
+#news {
+  text-decoration: none;
+}
+
+.modal-card-title {
+  white-space: normal;
+}
