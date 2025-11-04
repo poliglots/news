@@ -34,3 +34,9 @@ body {
 .modal-card-title {
   white-space: normal;
 }
+
+@media screen and (max-width: 768px) {
+    body {
+        padding-top: 10vh; 
+    }
+}
