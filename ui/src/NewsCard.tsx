@@ -18,14 +18,19 @@ function NewsCard({ newsLog }: { newsLog: NewsLog }) {
       <article className="message is-info">
         <div className="message-header">
           <p>{newsLog.headline}</p>
-          <button className="button is-info is-light">
-            {newsLog.updatedAt}-{newsLog.level}
+          <button className="button is-small is-info is-light">
+            {newsLog.level}
           </button>
         </div>
         <div className="message-body">
           <a id="news" onClick={handleOpenModal}>
             {newsLog.message}
+            <br></br>
+            <button className="button is-small is-light">
+              {new Date(newsLog.updatedAt).toDateString()}
+            </button>
           </a>
+
           <Modal
             isActive={isModalActive}
             onClose={handleCloseModal}

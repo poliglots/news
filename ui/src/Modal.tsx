@@ -16,7 +16,7 @@ const Modal = ({ isActive, onClose, headline, link, details }: ModalParams) => {
       <div className="modal-background" onClick={onClose}></div>
       <div className="modal-card">
         <header className="modal-card-head">
-          <div className="modal-card-title is-size-6">{headline}</div>
+          <div className="modal-card-body is-size-6">{headline}</div>
           <button
             className="delete"
             aria-label="close"
