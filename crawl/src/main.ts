@@ -6,8 +6,9 @@ import { writeFileSync } from "node:fs";
 
 const DEBUG_MODE = Boolean(process.env.DEBUG_MODE) || false;
 
-async function getFullNews(url: string, site: Site) {
+async function getNewsParagraphs(url: string, site: Site) {
   let full_story = "";
+  let updatedAt = "";
   try {
     let res = await fetch(url, {
       headers: site.headers,
@@ -15,6 +16,12 @@ async function getFullNews(url: string, site: Site) {
     let page = await res.text();
 
     let $ = load(page);
+    if (site.updateAtAttribute === "text") {
+      updatedAt = $(site.updatedAtTag).text();
+    } else {
+      updatedAt = $(site.updatedAtTag).attr(site.updateAtAttribute) ?? "";
+    }
+
     let paragraphs = $(site.followLinkTextTag);
 
     for (const paragraph of paragraphs) {
@@ -24,7 +31,7 @@ async function getFullNews(url: string, site: Site) {
   } catch (error) {
     console.error(`Error in reading ${url} - `, error);
   } finally {
-    return full_story;
+    return { full_story, updatedAt };
   }
 }
 
@@ -59,11 +66,12 @@ async function readNews(site: Site) {
         } else {
           navLink = `${site.url}${link}`;
         }
-        let detailedNews = await getFullNews(navLink, site);
+        let { full_story, updatedAt } = await getNewsParagraphs(navLink, site);
         let news: News = {
           link: `${navLink}`,
           headline: `${headline}`,
-          details: `${detailedNews}`,
+          details: `${full_story}`,
+          updatedAt: updatedAt,
         };
         logger.info("", news);
         counter++;

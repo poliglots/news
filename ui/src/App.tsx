@@ -21,7 +21,7 @@ function App() {
       ></Nav>
       <div id="main">
         {data
-          .sort((a, b) => a.headline.localeCompare(b.headline))
+          .sort((a, b) => a.updatedAt.localeCompare(b.updatedAt))
           .filter((item) =>
             item.link.toLowerCase().includes(filterBy.toLowerCase())
           )

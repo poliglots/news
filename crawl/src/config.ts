@@ -11,6 +11,8 @@ export default async function siteList() {
       headLineLinkTag: "a",
       headLineTextTag: "span.container__headline-text",
       followLinkTextTag: "p",
+      updatedAtTag: "span[data-last-publish]",
+      updateAtAttribute: "data-last-publish",
       headers: {},
     },
     {
@@ -18,6 +20,8 @@ export default async function siteList() {
       headLineLinkTag: "a",
       headLineTextTag: "h2",
       followLinkTextTag: "p",
+      updatedAtTag: "time[datetime]",
+      updateAtAttribute: "datetime",
       headers: {},
     },
     {
@@ -25,6 +29,8 @@ export default async function siteList() {
       headLineLinkTag: "a",
       headLineTextTag: "span",
       followLinkTextTag: "p",
+      updatedAtTag: "div.date-simple > span[aria-hidden]",
+      updateAtAttribute: "text",
       headers: {},
     },
     {
@@ -32,6 +38,8 @@ export default async function siteList() {
       headLineLinkTag: "a",
       headLineTextTag: "span",
       followLinkTextTag: "p",
+      updatedAtTag: "time[datetime]",
+      updateAtAttribute: "datetime",
       headers: {
         "User-Agent":
           "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:144.0) Gecko/20100101 Firefox/144.0",
@@ -45,6 +53,8 @@ export default async function siteList() {
       headLineLinkTag: "a",
       headLineTextTag: "h2",
       followLinkTextTag: "p",
+      updatedAtTag: "time[datetime]",
+      updateAtAttribute: "datetime",
       headers: {},
     },
     {
@@ -52,6 +62,8 @@ export default async function siteList() {
       headLineLinkTag: "a",
       headLineTextTag: "span",
       followLinkTextTag: "div.text-module__text__0GDob",
+      updatedAtTag: "time[datetime]",
+      updateAtAttribute: "datetime",
       headers: {},
     },
     {
@@ -59,6 +71,8 @@ export default async function siteList() {
       headLineLinkTag: "a",
       headLineTextTag: "p",
       followLinkTextTag: "p",
+      updatedAtTag: "time[datetime]",
+      updateAtAttribute: "datetime",
       headers: {},
     },
   ];

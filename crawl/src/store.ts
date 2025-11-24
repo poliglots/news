@@ -4,12 +4,15 @@ export interface Site {
   headLineTextTag: string;
   followLinkTextTag: string;
   headers: {};
+  updatedAtTag: string;
+  updateAtAttribute: string;
 }
 
 export interface News {
   link: string;
   headline: string;
   details: string;
+  updatedAt: string;
 }
 
 export interface NewsLog extends News {
