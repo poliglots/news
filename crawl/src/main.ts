@@ -71,7 +71,10 @@ async function readNews(site: Site) {
           link: `${navLink}`,
           headline: `${headline}`,
           details: `${full_story}`,
-          updatedAt: updatedAt,
+          updatedAt:
+            updatedAt === ""
+              ? new Date().toISOString()
+              : new Date(updatedAt).toISOString(),
         };
         logger.info("", news);
         counter++;
