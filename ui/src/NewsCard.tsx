@@ -19,8 +19,7 @@ function NewsCard({ newsLog }: { newsLog: NewsLog }) {
         <div className="message-header">
           <p>{newsLog.headline}</p>
           <button className="button is-info is-light">
-            {newsLog.updatedAt}
-            {newsLog.level}
+            {newsLog.updatedAt}-{newsLog.level}
           </button>
         </div>
         <div className="message-body">
