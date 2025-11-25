@@ -12,11 +12,11 @@ function Nav({
     <div className="navbar">
       <button className="header-items button is-link is-light">News</button>
       <input
-        className="header-items button"
+        className="header-items button is-small"
         placeholder="search by source"
         onChange={handleChange}
       ></input>
-      <button className="header-items button is-info is-light">
+      <button className="header-items button is-info is-light is-small">
         updated at : {lastUpdate} UTC
       </button>
     </div>

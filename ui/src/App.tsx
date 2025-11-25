@@ -14,7 +14,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div id="page">
       <Nav
         lastUpdate={lastRun.time.split("GMT")[0]}
         onInputChange={handleInputChange}

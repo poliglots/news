@@ -9,6 +9,9 @@ const DEBUG_MODE = Boolean(process.env.DEBUG_MODE) || false;
 async function getNewsParagraphs(url: string, site: Site) {
   let full_story = "";
   let updatedAt = "";
+  const today = new Date(); // Get the current date and time
+  let twoDaysAgo = new Date(today); // Create a new Date object based on today
+  twoDaysAgo.setDate(today.getDate() - 2); // Subtract 2 days from the current day of the month
   try {
     let res = await fetch(url, {
       headers: site.headers,
@@ -19,7 +22,9 @@ async function getNewsParagraphs(url: string, site: Site) {
     if (site.updateAtAttribute === "text") {
       updatedAt = $(site.updatedAtTag).text();
     } else {
-      updatedAt = $(site.updatedAtTag).attr(site.updateAtAttribute) ?? "";
+      updatedAt =
+        $(site.updatedAtTag).attr(site.updateAtAttribute) ??
+        twoDaysAgo.toDateString();
     }
 
     let paragraphs = $(site.followLinkTextTag);
@@ -71,10 +76,7 @@ async function readNews(site: Site) {
           link: `${navLink}`,
           headline: `${headline}`,
           details: `${full_story}`,
-          updatedAt:
-            updatedAt === ""
-              ? new Date().toISOString()
-              : new Date(updatedAt).toISOString(),
+          updatedAt: new Date(updatedAt).toISOString(),
         };
         logger.info("", news);
         counter++;

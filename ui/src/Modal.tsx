@@ -25,7 +25,12 @@ const Modal = ({ isActive, onClose, headline, link, details }: ModalParams) => {
         </header>
         <section className="modal-card-body">{details}</section>
         <footer className="modal-card-foot">
-          <div className="modal-card-body is-size-7">{"Source : " + link}</div>
+          <div className="modal-card-body is-size-7">
+            {`Source : `}
+            <a href={link} target="_blank">
+              {link}
+            </a>
+          </div>
           <button className="button" onClick={onClose}>
             Close
           </button>
