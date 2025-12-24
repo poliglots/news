@@ -2,12 +2,12 @@ import fs from "node:fs";
 import readline from "node:readline";
 import { type NewsLog } from "./store.ts";
 import { NEWS_JSON_FILE, NEWS_TEXT_FILE } from "./config.ts";
-import { BlackListHeadLine, BlackListPara } from "./filterList.ts";
+import { BlackListedWords, BlackListURLs } from "./filterList.ts";
 import { load } from "cheerio";
 
 async function isHeadlineGarbage(news: NewsLog) {
   // if headline contains garbage
-  for (let word in BlackListHeadLine) {
+  for (let word in BlackListedWords) {
     if (news.headline.includes(word)) {
       return true;
     }
@@ -17,7 +17,7 @@ async function isHeadlineGarbage(news: NewsLog) {
 
 async function isParaGarbage(para: string) {
   // if headline contains garbage
-  for (let word in BlackListPara) {
+  for (let word in BlackListedWords) {
     if (para.includes(word)) {
       return true;
     }
@@ -61,7 +61,11 @@ async function winstonLogFile2Json(filePath: string, jsonFilePath: string) {
         .slice(0, 4)
         .join(". ")
         .concat(".");
-      if (!(await isHeadlineGarbage(newsLog)) && newsLog.details.length > 300) {
+      if (
+        !(await isHeadlineGarbage(newsLog)) &&
+        newsLog.details.length > 300 &&
+        !BlackListURLs.some((item) => newsLog.link.includes(item))
+      ) {
         logArray.push(newsLog);
       }
     }

@@ -10,7 +10,14 @@ function Nav({
   };
   return (
     <div className="navbar">
-      <button className="header-items button is-link is-light">News</button>
+      <a
+        className="header-items button is-link is-light"
+        href="https://poliglots.github.io/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        News By Poliglots
+      </a>
       <input
         className="header-items button is-small"
         placeholder="search by source"

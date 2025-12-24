@@ -91,7 +91,7 @@ async function writeTime() {
   try {
     writeFileSync(TIME_JSON_FILE, `{"time":"${new Date()}"}`);
   } catch (error) {
-    console.log("error in witing time");
+    console.log("error in writing time");
   }
 }
 
